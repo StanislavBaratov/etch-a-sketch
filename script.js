@@ -5,17 +5,13 @@ const clearWorkspace = function() {
     workspace.forEach((item) => item.remove());
 }
 
-const createPixel = function() {
+const createPixel = function(x, y) {
     const pixel = document.createElement('div');
-    pixel.style.backgroundColor = '#fff';
-    pixel.style.borderWidth = '1px';
-    pixel.style.borderColor = '#000';
-    pixel.style.borderStyle = 'solid';
-    pixel.style.flexGrow = 0;
-    pixel.style.flexShrink = 0;
-    pixel.style.flexBasis = PIXEL_SIZE;
+    pixel.setAttribute('class', 'pixel');
+    pixel.setAttribute('id', `${x}_${y}`);
+    pixel.style.height = PIXEL_SIZE;
     pixel.style.width = PIXEL_SIZE;
-
+    
     return pixel;
 
 }
@@ -23,14 +19,12 @@ const createPixel = function() {
 const createCanvas = function(width, height) {
     const canvas = document.createElement('div');
     canvas.setAttribute('id', 'canvas');
-    
-    const rows = [];
+    canvas.style.flexDirection = 'column';
+
     for (let i = 0; i < height; i++) {
         const row = document.createElement('div');
-        row.style.flexDirection = 'column';
-
         for (let j = 0; j < width; j++) {
-            row.appendChild(createPixel());
+            row.appendChild(createPixel(j, i));
         }
         canvas.appendChild(row);
     }
