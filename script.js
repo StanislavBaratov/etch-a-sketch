@@ -16,16 +16,21 @@ const createPixel = function(x, y) {
 
 }
 
+const createCanvasRow = function(width) {
+    const row = document.createElement('div');
+        for (let i = 0; i < width; i++) {
+            row.appendChild(createPixel());
+        }
+    
+    return row;
+}
+
 const createCanvas = function(width, height) {
     const canvas = document.createElement('div');
     canvas.setAttribute('id', 'canvas');
 
     for (let i = 0; i < height; i++) {
-        const row = document.createElement('div');
-        for (let j = 0; j < width; j++) {
-            row.appendChild(createPixel(j, i));
-        }
-        canvas.appendChild(row);
+        canvas.appendChild(createCanvasRow(width));
     }
 
     return canvas;
