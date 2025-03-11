@@ -66,11 +66,11 @@ const createCanvas = function(width, height) {
     return canvas;
 }
 
-const createNewImage = function() {
+const createNewImage = function(width, height) {
     clearWorkspace();
     
     const workspace = document.querySelector('main');
-    workspace.appendChild(createCanvas(16, 16));
+    workspace.appendChild(createCanvas(width, height));
 }
 
 const createWelcomeText = function() {
@@ -87,7 +87,7 @@ const createCreateButton = function() {
     createButton.setAttribute('id', 'create-button');
     createButton.setAttribute('type', 'button');
     createButton.textContent = 'Create image';
-    createButton.addEventListener('click', createNewImage);
+    createButton.addEventListener('click', (event) => createNewImage(16, 16));
 
     return createButton;
 }
