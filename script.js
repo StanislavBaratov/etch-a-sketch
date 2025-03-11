@@ -19,7 +19,6 @@ const createPixel = function(x, y) {
 const createCanvas = function(width, height) {
     const canvas = document.createElement('div');
     canvas.setAttribute('id', 'canvas');
-    canvas.style.flexDirection = 'column';
 
     for (let i = 0; i < height; i++) {
         const row = document.createElement('div');
@@ -33,9 +32,9 @@ const createCanvas = function(width, height) {
 }
 
 const createNewImage = function() {
-    const workspace = document.querySelector('main');
     clearWorkspace();
     
+    const workspace = document.querySelector('main');
     workspace.appendChild(createCanvas(16, 16));
 }
 
