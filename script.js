@@ -1,4 +1,6 @@
 const PIXEL_SIZE = '20px';
+let currentColor = '#000';
+const COLORS = ['#ff0000', '#ffff00', '#ffffff', '#000000', '#ff00ff', '#00ff00', '#00ffff', '#0000ff']
 
 const clearWorkspace = function() {
     const workspace = document.querySelectorAll('main div');
@@ -18,8 +20,7 @@ const draw = function(event) {
     const pixel = event.target;
     const test = pixel.id;
 
-    pixel.style.backgroundColor = '#000';
-    console.log(`Перекрасили ${pixel.id}`);
+    pixel.style.backgroundColor = currentColor;
 }
 
 
@@ -100,4 +101,22 @@ const initWorkspace = function() {
     main.appendChild(startBlock);
 }
 
+const createColorButton = function(color) {
+    const button = document.createElement('div');
+    button.setAttribute('class', 'palette-item');
+    button.style.backgroundColor = color;
+    
+    return button;
+}
+
+const addColorToPalette = function(palette, color) {
+    palette.appendChild(createColorButton(color));
+}
+
+const initColorPalette = function() {
+    const palette = document.querySelector('aside');
+    COLORS.forEach((color) => addColorToPalette(palette, color));
+}
+
 initWorkspace();
+initColorPalette();

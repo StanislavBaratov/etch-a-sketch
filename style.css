@@ -13,8 +13,12 @@ nav {
 }
 
 aside {
-    /*border: 1px solid orange;*/
+    display: flex;
+    flex-direction: column;
     flex: 0 0 50px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
 }
 
 main {
@@ -77,6 +81,7 @@ aside {
     background-color:rgb(221, 221, 221);
     border: 1px solid #000;
     border-radius: 10px;
+    padding: 10px;
 }
 
 a {
@@ -131,4 +136,11 @@ header {
     border-width: 1px;
     border-style: solid;
     border-color: #000;
+}
+
+.palette-item {
+    border: 1px solid #000;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
 }
