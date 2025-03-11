@@ -5,10 +5,35 @@ const clearWorkspace = function() {
     workspace.forEach((item) => item.remove());
 }
 
-const createPixel = function(x, y) {
+const deactivateDraw = function(MouseEvent) {
+    const canvas = document.querySelector('#canvas');
+    canvas.childNodes.forEach((child) => {
+        child.childNodes.forEach((pixel) => pixel.removeEventListener('mouseenter', draw))
+    });
+}
+
+const draw = function(event) {
+    event.stopPropagation();
+    
+    const pixel = event.target;
+    const test = pixel.id;
+
+    pixel.style.backgroundColor = '#000';
+    console.log(`Перекрасили ${pixel.id}`);
+}
+
+
+const activateDraw = function(MouseEvent) {
+    console.log('Activated drawing');
+    const canvas = document.querySelector('#canvas');
+    canvas.childNodes.forEach((child) => {
+        child.childNodes.forEach((pixel) => pixel.addEventListener('mouseenter', draw))
+    });
+}
+
+const createPixel = function() {
     const pixel = document.createElement('div');
     pixel.setAttribute('class', 'pixel');
-    pixel.setAttribute('id', `${x}_${y}`);
     pixel.style.height = PIXEL_SIZE;
     pixel.style.width = PIXEL_SIZE;
     
@@ -18,8 +43,9 @@ const createPixel = function(x, y) {
 
 const createCanvasRow = function(width) {
     const row = document.createElement('div');
+    row.setAttribute('id', 3);
         for (let i = 0; i < width; i++) {
-            row.appendChild(createPixel());
+            row.appendChild(createPixel(i));
         }
     
     return row;
@@ -32,6 +58,9 @@ const createCanvas = function(width, height) {
     for (let i = 0; i < height; i++) {
         canvas.appendChild(createCanvasRow(width));
     }
+
+    canvas.addEventListener('mousedown', activateDraw);
+    canvas.addEventListener('mouseup', deactivateDraw);
 
     return canvas;
 }
