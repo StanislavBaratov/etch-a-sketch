@@ -135,7 +135,32 @@ const initColorPalette = function() {
     activateColor(currentColor);
 }
 
+const cleanImage = function(event) {
+    const canvas = document.querySelector('#canvas');
+    if (canvas) {
+        canvas.childNodes.forEach((row) => {
+            row.childNodes.forEach((pixel) => {
+                pixel.style.backgroundColor = '#fff';
+            })
+        });
+    }
+}
 
+const createToolbarButton = function(name, action) {
+    const button = document.createElement('button');
+    button.setAttribute('type', 'button');
+    button.setAttribute('class', 'toolbar-button');
+    button.textContent = name;
+    button.addEventListener('click', action);
+    
+    return button;
+}
+
+const initToolbar = function() {
+    const toolbar = document.querySelector('.toolbar');
+    toolbar.appendChild(createToolbarButton('Clean image', cleanImage));
+}
 
 initWorkspace();
 initColorPalette();
+initToolbar();

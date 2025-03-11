@@ -73,7 +73,10 @@ nav {
 }
 
 .toolbar {
-    flex: 0 0 40px; 
+    flex: 0 0 20px; 
+    justify-content: flex-start;
+    gap: 20px;
+    align-items: center;
 }
 
 .toolbar,
@@ -141,11 +144,27 @@ header {
 .palette-item {
     border: 1px solid #000;
     border-radius: 5px;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
 }
 
 #selected-color {
     border-width: 4px;
     border-color:rgb(27, 27, 27);
+}
+
+.toolbar-button {
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px 20px;
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.toolbar-button:hover {
+    background-color: #cfcfcf;
+}
+
+.toolbar-button:active {
+    background-color: #727272;
 }
