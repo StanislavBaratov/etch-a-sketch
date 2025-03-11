@@ -27,7 +27,7 @@ const activateDraw = function(MouseEvent) {
     console.log('Activated drawing');
     const canvas = document.querySelector('#canvas');
     canvas.childNodes.forEach((child) => {
-        child.childNodes.forEach((pixel) => pixel.addEventListener('mouseenter', draw))
+        child.childNodes.forEach((pixel) => pixel.addEventListener('mouseenter', draw));
     });
 }
 
