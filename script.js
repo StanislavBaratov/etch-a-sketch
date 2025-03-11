@@ -1,5 +1,5 @@
 const PIXEL_SIZE = '20px';
-let currentColor = '#000';
+let currentColor = null;
 const COLORS = ['#ff0000', '#ffff00', '#ffffff', '#000000', '#ff00ff', '#00ff00', '#00ffff', '#0000ff']
 
 const clearWorkspace = function() {
@@ -20,7 +20,7 @@ const draw = function(event) {
     const pixel = event.target;
     const test = pixel.id;
 
-    pixel.style.backgroundColor = currentColor;
+    pixel.style.backgroundColor = currentColor.style.backgroundColor;
 }
 
 
@@ -101,10 +101,25 @@ const initWorkspace = function() {
     main.appendChild(startBlock);
 }
 
+const activateColor = function(color) {
+    color.setAttribute('id', 'selected-color');
+    currentColor = color;
+}
+
+const deactivateColor = function(color) {
+    color.removeAttribute('id');
+}
+
+const selectColor = function(event) {
+    deactivateColor(currentColor);
+    activateColor(event.target);
+}
+
 const createColorButton = function(color) {
     const button = document.createElement('div');
     button.setAttribute('class', 'palette-item');
     button.style.backgroundColor = color;
+    button.addEventListener('click', selectColor);
     
     return button;
 }
@@ -116,7 +131,11 @@ const addColorToPalette = function(palette, color) {
 const initColorPalette = function() {
     const palette = document.querySelector('aside');
     COLORS.forEach((color) => addColorToPalette(palette, color));
+    currentColor = document.querySelector('aside div');
+    activateColor(currentColor);
 }
+
+
 
 initWorkspace();
 initColorPalette();
