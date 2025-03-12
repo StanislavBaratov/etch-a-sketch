@@ -35,8 +35,6 @@ const activateDraw = function(MouseEvent) {
 const createPixel = function() {
     const pixel = document.createElement('div');
     pixel.setAttribute('class', 'pixel');
-    pixel.style.height = PIXEL_SIZE;
-    pixel.style.width = PIXEL_SIZE;
     
     return pixel;
 
@@ -44,7 +42,7 @@ const createPixel = function() {
 
 const createCanvasRow = function(width) {
     const row = document.createElement('div');
-    row.setAttribute('id', 3);
+    row.setAttribute('class', 'canvas-row');
         for (let i = 0; i < width; i++) {
             row.appendChild(createPixel(i));
         }
@@ -55,7 +53,7 @@ const createCanvasRow = function(width) {
 const createCanvas = function(width, height) {
     const canvas = document.createElement('div');
     canvas.setAttribute('id', 'canvas');
-
+    canvas.style.aspectRatio = `${width} / ${height}`;
     for (let i = 0; i < height; i++) {
         canvas.appendChild(createCanvasRow(width));
     }

@@ -132,6 +132,7 @@ header {
     background-color: #fff;
     border: 2px solid #000;
     box-shadow: 5px 5px 5px black;
+    flex: 1;
 }
 
 .pixel {
@@ -167,4 +168,9 @@ header {
 
 .toolbar-button:active {
     background-color: #727272;
+}
+
+.canvas-row,
+.pixel {
+    flex: 1;
 }
