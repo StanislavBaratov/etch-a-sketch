@@ -146,6 +146,12 @@ const cleanImage = function(event) {
     }
 }
 
+const newImage = function(event) {
+    const width = prompt('Input width', 16);
+    const height = prompt('Input height', 16);
+    createNewImage(width, height);
+}
+
 const createToolbarButton = function(name, action) {
     const button = document.createElement('button');
     button.setAttribute('type', 'button');
@@ -159,6 +165,7 @@ const createToolbarButton = function(name, action) {
 const initToolbar = function() {
     const toolbar = document.querySelector('.toolbar');
     toolbar.appendChild(createToolbarButton('Clean image', cleanImage));
+    toolbar.appendChild(createToolbarButton('New image', newImage));
 }
 
 initWorkspace();
